@@ -11,7 +11,7 @@ looper
 **/results*/
 *includes*
 *libs*
-*libmutlock.so
+*libmutlock*
 test2/test-*
 *.toc
 *.lof
