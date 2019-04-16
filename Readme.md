@@ -21,7 +21,7 @@ It will generate a configuration file in `script/machine_conf/`.
 Now, you can run standard benchmarks by executing:
 
 ```sh
-$ ./run_rand_batch_test.sh machine_conf/<your machine conf> tests_conf/<tests conf>
+$ ./run_rand_batch_test.sh machine_conf/<your machine conf> tests_conf/<tests conf> thread_conf/<thread conf>
 ```
 
 ### Plotting results
