@@ -29,7 +29,7 @@ OPT:= -O0
 
 LPATH:=-L$(SO_LIB_PATH)
 
-RPATH:=-Wl,-rpath=$(PWD)/$(SO_LIB_PATH)
+RPATH:=-Wl,-rpath=$(SO_LIB_PATH)
 
 INCLUDES:= -I$(SO_INC_PATH) $(addprefix -I,$(SUBDIRS))
  
