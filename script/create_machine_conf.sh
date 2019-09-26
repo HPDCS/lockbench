@@ -2,6 +2,16 @@
 
 ITERATIONS="10"
 
+
+file="machine_conf/`uname -n`.conf"
+
+
+if test -f "$file"; then
+    echo "$file exist"
+    exit
+fi
+
+
 cd utils
 make
 
@@ -49,14 +59,6 @@ python -c "print '$vendor'"
 distro=`lsb_release -a | grep Descr`
 distro=`python -c "print '$distro'.split(':')[1].strip()"`
 
-
-file="machine_conf/`uname -n`.conf"
-
-
-if test -f "$file"; then
-    echo "$file exist"
-    exit
-fi
 
 
 echo "MACHINE_NAME=\"$vendor\""						> $file
