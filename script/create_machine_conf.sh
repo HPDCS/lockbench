@@ -24,7 +24,7 @@ echo NEW LOOPER $result
 make clean
 cd ..
 
-val=`../bin/test-PTHREAD_MUTEX_LOCK -s 1 -rnd_cs_lower 100000 -rnd_cs_higher 100000 -rnd_ncs_lower 0 -rnd_ncs_higher 0 -t 1 -seq | grep CS/sec`
+val=`../bin/test-PTHREAD_MUTEX_LOCK  -s 1 -rnd_cs_lower 100000 -rnd_cs_higher 100000 -rnd_ncs_lower 0 -rnd_ncs_higher 0 -t 1 -seq | grep CS/sec`
 val=`python -c "print '$val'.strip().split(' ')[-1]"` 
 result=`echo 100000/$val | bc`
 echo LAST LOOPER $result
@@ -49,7 +49,14 @@ python -c "print '$vendor'"
 distro=`lsb_release -a | grep Descr`
 distro=`python -c "print '$distro'.split(':')[1].strip()"`
 
+
 file="machine_conf/`uname -n`.conf"
+
+
+if test -f "$file"; then
+    echo "$file exist"
+    exit
+fi
 
 
 echo "MACHINE_NAME=\"$vendor\""						> $file
