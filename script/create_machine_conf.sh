@@ -24,7 +24,7 @@ echo NEW LOOPER $result
 make clean
 cd ..
 
-val=`../bin/test-QUEUED_SPINLOCK_LOCK -s 1 -rnd_cs_lower 100000 -rnd_cs_higher 100000 -rnd_ncs_lower 0 -rnd_ncs_higher 0 -t 1 -seq | grep CS/sec`
+val=`../bin/test-PTHREAD_MUTEX_LOCK -s 1 -rnd_cs_lower 100000 -rnd_cs_higher 100000 -rnd_ncs_lower 0 -rnd_ncs_higher 0 -t 1 -seq | grep CS/sec`
 val=`python -c "print '$val'.strip().split(' ')[-1]"` 
 result=`echo 100000/$val | bc`
 echo LAST LOOPER $result
