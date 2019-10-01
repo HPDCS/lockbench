@@ -144,3 +144,6 @@ sed -i 's/_/-/g' $out_filename-CPU
 sed -i 's/_/-/g' $out_filename-TH
 
 
+python utils/averages.py $out_filename-TH $MACHINE_CORES
+
+

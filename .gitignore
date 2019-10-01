@@ -22,3 +22,6 @@ test2/test-*
 **/tmp_scripts
 /include/
 dat/
+plots/
+*.tar.gz
+*.tar

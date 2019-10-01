@@ -21,8 +21,8 @@ set style line 6 lt 2 lw 2 pt 8 ps 1.5 lc rgb "#000000"
 set style line 12 lc rgb '#000000' lt "-" lw 2
 set grid back ls 12
 
-set key center right spacing 2
-#set key below center height 5 width 2
+#set key center right spacing 2
+set key below center height 5 width 2
 
 set title machine." - ".cores." cores\n CSL:".csl." CSU:".csu." NCSL:".ncsl." NCSU:".ncsu noenhanced
 
