@@ -47,7 +47,7 @@ mkdir -p $DST_FOLDER
 SKIP_T="8"
 SKIP_S="1"
 
-MAX_T="64"
+MAX_T="$((MACHINE_CORES*2))"
 MAX_S="61"
 
 
