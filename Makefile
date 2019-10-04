@@ -17,7 +17,7 @@ PWD:=$(shell pwd)
 CXX:=gcc -std=gnu99 #-pthread
 
 # SHARED OBJECTS
-LIBS:=-lpthread -lmutlock
+LIBS:=-lpthread #-lmutlock
 SO_LIB_PATH:=$(PWD)/libs
 SO_INC_PATH:=$(PWD)/include
 SUBDIRS:=src

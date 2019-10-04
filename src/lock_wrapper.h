@@ -48,7 +48,7 @@ static inline void init_lock(unsigned long long spin_window){
 #include <pthread.h>
 typedef pthread_mutex_t lock_t;
 lock_t lock = PTHREAD_MUTEX_INITIALIZER;
-static inline void destroy_lock() 			{}
+static inline void destroy_lock() 			{pthread_mutex_destroy(&lock);}
 static inline void release_lock() {			pthread_mutex_unlock(&lock);}
 static inline void acquire_lock() {			pthread_mutex_lock(&lock);}
 char* lock_to_string() { return " PTHREAD_MUTEX_LOCK"; }
@@ -61,7 +61,7 @@ static inline void init_lock(unsigned long long spin_window){}
 #include <pthread.h>
 typedef pthread_mutex_t lock_t;
 lock_t lock = PTHREAD_ADAPTIVE_MUTEX_INITIALIZER_NP;
-static inline void destroy_lock() 			{}
+static inline void destroy_lock() { 			pthread_mutex_destroy(&lock);}
 static inline void release_lock() {			pthread_mutex_unlock(&lock);}
 static inline void acquire_lock() {			pthread_mutex_lock(&lock);}
 char* lock_to_string() { return " PTHREAD_ADAPTIVE_MUTEX_LOCK"; }
