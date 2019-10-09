@@ -23,7 +23,7 @@ SO_INC_PATH:=$(PWD)/include
 SUBDIRS:=src
 
 #this is a temporary solution
-LOCK_DIR:=libmutlock
+LOCK_DIR:=../libmutlock
 
 OPT:= -O0
 
@@ -47,8 +47,7 @@ all: deps $(TARGETS)
 
 deps:
 	echo "Cloning list of dependencies..";
-	cd script; ./clone_modules.sh $(PWD); cd ..
-	cd $(LOCK_DIR) && make; make litl;  make install INSTALL_SO_PATH=$(SO_LIB_PATH) INSTALL_INC_PATH=$(SO_INC_PATH); cd $(PWD);
+	cd $(LOCK_DIR); make;  make install INSTALL_SO_PATH=$(SO_LIB_PATH) INSTALL_INC_PATH=$(SO_INC_PATH); cd $(PWD);
 
 
 -include $(DEPS)
