@@ -101,7 +101,7 @@ for r in $NRUN; do
 	for t in $THREADS; do
 		for l in $LOCKS; do
 			for sws in "1"; do
-				cmd_line="../liblitl/lib$l.sh ../bin/test-PTHREAD_MUTEX_LOCK -s $sws -rnd_cs_lower $LOWER_RANGE_CS_TS -rnd_cs_higher $UPPER_RANGE_CS_TS -rnd_ncs_lower $LOWER_RANGE_NCS_TS -rnd_ncs_higher $UPPER_RANGE_NCS_TS -t $t -l $TEST_DURATION -trace"
+				cmd_line="../../liblitl/lib$l.sh ../bin/test-PTHREAD_MUTEX_LOCK -s $sws -rnd_cs_lower $LOWER_RANGE_CS_TS -rnd_cs_higher $UPPER_RANGE_CS_TS -rnd_ncs_lower $LOWER_RANGE_NCS_TS -rnd_ncs_higher $UPPER_RANGE_NCS_TS -t $t -l $TEST_DURATION -trace"
 				filename="$FOLDER/$l-win-$sws-csl-$LOWER_RANGE_CS_TS-csu-$UPPER_RANGE_CS_TS-ncsl-$LOWER_RANGE_NCS_TS-ncsu-$UPPER_RANGE_NCS_TS-T-$t-R-$r"
 				exec_test $l $filename $sws
 			done
