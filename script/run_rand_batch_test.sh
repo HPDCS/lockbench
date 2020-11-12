@@ -58,7 +58,21 @@ exec_test ()
 	echo $cmd_line 
 	while [ ! -f $2 ] || [ $(grep -c "Throughput:" $2) -eq 0 ]
 	do
+		if [ -e /sys/class/powercap/intel-rapl/intel-rapl\:0/energy_uj ]; 
+			then start=0; 
+			for i in  /sys/class/powercap/intel-rapl/intel-rapl\:*/energy_uj; do 
+				start=$(($start+`cat $i`)); 
+			done; 
+			#echo $start; 
+		fi
 		{ timeout $((TEST_DURATION * 2)) /usr/bin/time -f'%U %S' $cmd_line; } &> $2
+		if [ -e /sys/class/powercap/intel-rapl/intel-rapl\:0/energy_uj ]; 
+			then end=0; 
+			for i in  /sys/class/powercap/intel-rapl/intel-rapl\:*/energy_uj; do 
+				end=$(($end+`cat $i`)); 
+			done; 
+			echo `tail -n1 $2` $(($end-$start)) >> $2
+		fi
 		if test $N -ge $MAX_RETRY ; then echo break; break; fi
 		N=$(( N+1 ))
 	done
