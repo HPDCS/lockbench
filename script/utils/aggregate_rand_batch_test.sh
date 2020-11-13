@@ -69,9 +69,11 @@ for t in $THREADS; do
 				touch $out_filename-TH
 				touch $out_filename-ST
 				touch $out_filename-UT
+				touch $out_filename-EN
 				grep "Throughput" $in_filename | head -n 1  | cut -f4 -d' ' >> $out_filename-TH
 				tail -n 1 $in_filename | cut -f1 -d' ' >> $out_filename-UT
-				tail -n 1 $in_filename | cut -f2 -d' ' >> $out_filename-ST
+				tail -n 1 $in_filename | cut -f2 -d' ' >> $out_filename-ST	
+				tail -n 1 $in_filename | cut -f3 -d' ' >> $out_filename-EN
 			done
 		done
 	done
@@ -148,6 +150,28 @@ for t in $THREADS; do
 			done < $in_filename-ST
 			
 			echo $count,$sum,$avg,$stdv >> $out_filename-ST
+
+			###################################################
+			
+			echo "COUNT,SUM,AVG,STDV" > $out_filename-EN
+			count=`wc -l $in_filename-EN | cut -f1 -d' '`
+			str=""
+			sum=0
+			while read p; do
+			  str="$str $p"
+			  sum=`echo $sum + $p | bc`
+			done < $in_filename-EN
+			avg=`echo $sum/$count | bc`
+			
+			ssum=0
+			while read p; do
+			  sq=`echo $p - $avg   | bc`
+			  ssum=`echo $ssum + $sq ^ 2  | bc`
+			  stdv=`echo $ssum / $count  | bc`
+			  stdv=`echo "sqrt ( $stdv )"  | bc`
+			done < $in_filename-EN
+			
+			echo $count,$sum,$avg,$stdv >> $out_filename-EN
 		done
 	done
 done
@@ -161,6 +185,7 @@ for t in $THREADS; do
 			rm -f $out_filename-TH
 			rm -f $out_filename-ST
 			rm -f $out_filename-UT
+			rm -f $out_filename-EN
 		done
 	done
 done

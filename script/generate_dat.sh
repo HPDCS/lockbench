@@ -68,6 +68,7 @@ for l in $LOCKS; do
 done
 
 echo $line > $out_filename-TH
+echo $line > $out_filename-EN
 echo $out_filename-TH
 
 
@@ -85,6 +86,18 @@ for t in $THREADS; do
 	echo $line >> $out_filename-TH
 done
 
+
+for t in $THREADS; do
+	line="$t"
+	for l in $LOCKS; do
+		for sws in "1"; do
+			in_filename="$SRC_FOLDER/$l-win-$sws-csl-$LOWER_RANGE_CS_TS-csu-$UPPER_RANGE_CS_TS-ncsl-$LOWER_RANGE_NCS_TS-ncsu-$UPPER_RANGE_NCS_TS-T-$t-STATS"
+			val=`tail -n1 $in_filename-EN | cut -f3 -d','`
+			line="$line $val"
+			done
+	done
+	echo $line >> $out_filename-EN
+done
 
 
 
@@ -140,8 +153,10 @@ rm $out_filename-CPU-FINAL-UT $out_filename-CPU-FINAL-ST $out_filename-CPU-TRANS
 
 sed -i 's/-1//g' $out_filename-CPU
 sed -i 's/-1//g' $out_filename-TH
+sed -i 's/-1//g' $out_filename-EN
 sed -i 's/_/-/g' $out_filename-CPU
 sed -i 's/_/-/g' $out_filename-TH
+sed -i 's/_/-/g' $out_filename-EN
 
 
 python utils/averages.py $out_filename-TH $MACHINE_CORES

@@ -89,6 +89,31 @@ cp ${SRC_FOLDER}/*.pdf ./${DST_FOLDER}/
 rm ${SRC_FOLDER}/*.pdf 
 
 
+###################                   Generate EN CONSUMPTION            ########################
+
+for file in ./${SRC_FOLDER}/*-EN;
+do
+    echo 'Plotting file '$file
+     CSL=`basename $file | cut -f2 -d'-'`
+     CSU=`basename $file | cut -f4 -d'-'`
+    NCSL=`basename $file | cut -f6 -d'-'`
+    NCSU=`basename $file | cut -f8 -d'-'`
+   
+	rm ./${SRC_FOLDER}/*.pdf
+	rm ./${SRC_FOLDER}/*.eps
+	
+
+    gnuplot -e "xmax=\""${MAX_T}"\"" -e "tic=\""${SKIP_T}"\"" -e "xl=\"Threads\"" -e "filename=\""$file"\"" -e "cores=\"${MACHINE_CORES}\"" -e "machine=\"${MACHINE_NAME}\"" -e "csl=\""$CSL"\"" -e "csu=\""$CSU"\"" -e "ncsl=\""$NCSL"\"" -e "ncsu=\""$NCSU"\"" ./gnuplot/plot3.gp
+	gnuplot -e "countlines=\""${count_lines}"\"" -e "xmax=\""$(($MACHINE_CORES+2))"\"" -e "tic=\""2"\"" -e "xl=\"Threads\"" -e "filename=\""$file"\"" -e "cores=\"${MACHINE_CORES}\"" -e "machine=\"${MACHINE_NAME}\"" -e "csl=\""$CSL"\"" -e "csu=\""$CSU"\"" -e "ncsl=\""$NCSL"\"" -e "ncsu=\""$NCSU"\"" ./gnuplot/plot2.gp
+	epstopdf $file.eps
+	rm $file.eps
+
+done
+
+cp ${SRC_FOLDER}/*.pdf ./${DST_FOLDER}/
+m ${SRC_FOLDER}/*.pdf 
+
+
 ###################                   Generate CPU plots             ########################
 
 for file in ./${SRC_FOLDER}/*-CPU;
