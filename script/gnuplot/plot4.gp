@@ -12,6 +12,7 @@ set size 1.0,0.5
 set xrange [0:xmax]
 set yrange [0:*]
 
+
 set style line 1 lt 2 lw 2 pt 3 ps 1.5 lc rgb "#000000"
 set style line 2 lt 2 lw 2 pt 2 ps 1.5 lc rgb "#000000"
 set style line 3 lt 2 lw 2 pt 4 ps 1.5 lc rgb "#000000"
@@ -33,5 +34,5 @@ set xlabel xl
 
 
 
-set ylabel "Total Throughput (CS / sec)"
+set ylabel "Energy/Throughput"
 plot for [col=2:*] filename using 1:col with linespoints ls col title columnheader

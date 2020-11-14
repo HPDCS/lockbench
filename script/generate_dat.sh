@@ -160,5 +160,5 @@ sed -i 's/_/-/g' $out_filename-EN
 
 
 python utils/averages.py $out_filename-TH $MACHINE_CORES
-
+python utils/compute_en_th.py $out_filename-EN $out_filename-TH > $out_filename-ENTH
 

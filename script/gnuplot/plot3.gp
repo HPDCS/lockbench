@@ -10,6 +10,8 @@ set grid xtics lc rgb "#bbbbbb" lw 1 lt 0
 set xtics tic
 set size 1.0,0.5
 set xrange [0:xmax]
+set yrange [0:*]
+
 
 set style line 1 lt 2 lw 2 pt 3 ps 1.5 lc rgb "#000000"
 set style line 2 lt 2 lw 2 pt 2 ps 1.5 lc rgb "#000000"
