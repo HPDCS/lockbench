@@ -10,7 +10,7 @@ MAX_RETRY="5"
 source  $1
 source  $2
 source  $3
-
+source tests_conf/lock_selection.conf
 
 
 for i in `seq 0 ${#VALUES[*]}`; do
