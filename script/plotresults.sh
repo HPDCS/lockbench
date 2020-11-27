@@ -8,6 +8,7 @@
 source  ./$1
 source  ./$2
 source  ./$3
+source tests_conf/lock_selection.conf
 
 for i in `seq 0 ${#VALUES[*]}`; do
 	if [ $LOWER_RANGE_CS = ${VALUES[$i]} ] ; then
