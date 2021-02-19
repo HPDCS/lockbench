@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # ./launch_all.sh machine_conf/<conf> thread_conf/<conf>
 

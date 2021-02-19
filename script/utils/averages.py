@@ -79,10 +79,15 @@ for k in sorted(d)[:-1]:
 
 
 for j in range(len(acc)):
-	acc[j] /= threads[-1]-cores	
-
+	try:
+		acc[j] /= threads[-1]-cores	
+	except:
+		acc[j] = 0
 for j in range(len(acc)):
-	acc[j] /= acc[-1]	
+	try:
+		acc[j] /= acc[-1]	
+	except:
+		acc[j] = 0
 
 acc = [str(v) for v in acc]
 o1.write("TIMESHARING " +" ".join(acc[:-1])+"\n")

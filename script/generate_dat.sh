@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # $1 confing_test
 # $2 confing_machine
@@ -8,6 +9,7 @@
 source  ./$1
 source  ./$2
 source  ./$3
+source tests_conf/lock_selection.conf
 
 
 for i in `seq 0 ${#VALUES[*]}`; do
