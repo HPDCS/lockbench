@@ -9,8 +9,10 @@ do_job(){
 #./plotresults.sh $1 $2 $3
 }
 
-do_job $1 tests_conf/test-0-3_7-0-3_7.conf $2	&
-do_job $1 tests_conf/test-0-3_7-0-366.conf $2	&
-do_job $1 tests_conf/test-0-366-0-366.conf $2	&
-do_job $1 tests_conf/test-0-366-0-3_7.conf $2	&
+do_job $1 tests_conf/test-0-3_7-0-3_7.conf $2	
+do_job $1 tests_conf/test-0-3_7-0-366.conf $2	
+do_job $1 tests_conf/test-0-366-0-366.conf $2	
+do_job $1 tests_conf/test-0-366-0-3_7.conf $2	
+do_job $1 tests_conf/test-0-36-0-36.conf   $2   
+
 wait
