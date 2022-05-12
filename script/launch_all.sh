@@ -6,3 +6,4 @@
 ./run_rand_batch_test.sh $1 tests_conf/test-0-3_7-0-366.conf $2	
 ./run_rand_batch_test.sh $1 tests_conf/test-0-366-0-366.conf $2	
 ./run_rand_batch_test.sh $1 tests_conf/test-0-366-0-3_7.conf $2	
+./run_rand_batch_test.sh $1 tests_conf/test-0-36-0-36.conf   $2
