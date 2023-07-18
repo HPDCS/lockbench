@@ -2,6 +2,7 @@
 
 # $1 confing_test
 # $2 confing_machine
+# $3 confing_thread
 
 
 
@@ -44,9 +45,20 @@ FOLDER="batch_res_${LOWER_RANGE_CS}_${UPPER_RANGE_CS}_${LOWER_RANGE_NCS}_${UPPER
 SRC_FOLDER="../out/${MACHINE_NAME}-out-$FOLDER/dat"
 DST_FOLDER="../out/${MACHINE_NAME}-out-$FOLDER/dat-aggregated"
 
-if [ ! -d ../out ]; then
+
+# if './out' directory exists remove it and run './utils/aggregate_rand_batch_test.sh'
+# if './out' directory does not exist run './utils/aggregate_rand_batch_test.sh'
+# '../out' because when executing 'generate_dat.sh' we are in the directory 'lockbench/script/' and 'out' is in 'lockbench/out/'
+if [ -d ../out ]; then
+	echo "The './out' directory exists: removing it."
+	rm ../out -r
 	echo "Aggregating data..."
-	./utils/aggregate_rand_batch_test.sh $1 $2
+	./utils/aggregate_rand_batch_test.sh $1 $2 $3
+	echo "DONE!"
+elif [ ! -d ../out ]; then
+	echo "The './out' directory does not exist."
+	echo "Aggregating data..."
+	./utils/aggregate_rand_batch_test.sh $1 $2 $3
 	echo "DONE!"
 fi
 

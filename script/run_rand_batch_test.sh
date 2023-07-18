@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# $1 confing_test
-# $2 confing_machine
+# $1 confing_machine
+# $2 confing_test
+# $3 confing_thread
 
 MAX_RETRY="5"
 
