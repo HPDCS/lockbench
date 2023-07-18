@@ -6,6 +6,7 @@
 
 # $1 confing_test
 # $2 confing_machine
+# $3 confing_thread
 
 source  ./$1
 source  ./$2
